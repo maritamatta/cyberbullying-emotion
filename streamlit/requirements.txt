@@ -1,4 +1,4 @@
-tensorflow==1.7.0
+tensorflow==2.5.0
 textblob==0.17.1
 tqdm==4.66.1
 wordcloud==1.9.3
