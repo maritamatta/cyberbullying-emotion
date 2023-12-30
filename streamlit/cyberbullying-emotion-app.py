@@ -199,7 +199,7 @@ def get_base64_of_bin_file(bin_file):
     return encoded_image
 
 # Set the background image path
-background_image_path = '.\\Utility Images\\background_image.png'
+background_image_path = '.\\utility-images\\background_image.png'
 
 # Encode the image to base64
 encoded_background_image = get_base64_of_bin_file(background_image_path)
@@ -208,7 +208,7 @@ encoded_background_image = get_base64_of_bin_file(background_image_path)
 opacity_level = 0.6
 
 # Set the background image path
-lit_image_path = '.\\Utility Images\\Timeline.png'
+lit_image_path = '.\\utility-images\\Timeline.png'
 
 # Your Streamlit content goes here
 if menu_id == 'Home':
@@ -288,7 +288,7 @@ if menu_id == 'Exploratory Data Analysis':
         col2.plotly_chart(pie_fig)
     
         # Load your custom brain-shaped mask image
-        mask_image = np.array(Image.open('.\\Utility Images\\human thought.jpg'))
+        mask_image = np.array(Image.open('.\\utility-images\\human thought.jpg'))
 
         # Create a WordCloud object with your mask and custom colors
         wordcloud = WordCloud(width=150, height=300, background_color=None, mode='RGBA', colormap='magma', max_words=200, mask=mask_image)
@@ -303,7 +303,7 @@ if menu_id == 'Exploratory Data Analysis':
         #word_bar_graph(emotional_detection, 'text', "Most Occurred Words")  # Use 'emotional_detection' instead of 'emotional_detection'
         # Assuming 'emotional_detection' is your DataFrame
         fig = word_bar_graph(emotional_detection, 'text', "Most Occurred Words")
-        #pio.write_image(fig, r'C:\Users\marit\Desktop\MSBA Thesis\streamlit app\Utility Images\word_bar_graph.png')
+        #pio.write_image(fig, r'C:\Users\marit\Desktop\MSBA Thesis\streamlit\utility-images\word_bar_graph.png')
         col2.plotly_chart(fig)
 
         # Show the word bar graph in the second column (row 2)
@@ -434,7 +434,7 @@ if menu_id == 'Exploratory Data Analysis':
         # Show the heatmap in the first column (col1)
         col1.plotly_chart(heatmap)
 
-        clusters_image_path = '.\\Utility Images\\clusters.png'
+        clusters_image_path = '.\\utility-images\\clusters.png'
         # Encode the image to base64
         encoded_clusters_image = get_base64_of_bin_file(clusters_image_path)
 
