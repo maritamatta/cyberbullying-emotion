@@ -95,9 +95,9 @@ def word_bar_graph(df, column, title, num_words=15, plot_height=600, plot_width=
     return fig
 
 #read the dataset
-kaggle_df = pd.read_csv('..//data//tweet_emotions.csv').drop('tweet_id', axis=1)
+kaggle_df = pd.read_csv('../data/tweet_emotions.csv').drop('tweet_id', axis=1)
 kaggle_df = kaggle_df.rename(columns={'content': 'text', 'sentiment': 'label'})
-huggingface_df = pd.read_parquet('..//data//huggingface_emotions.parquet')
+huggingface_df = pd.read_parquet('../data/huggingface_emotions.parquet')
 # Replace numerical labels with corresponding emotions gotten from the metadata on hugging face's website
 label_to_emotion = {
     0: 'sadness',
@@ -118,14 +118,14 @@ emotional_detection = pd.concat([huggingface_df, kaggle_df])
 emotional_detection.head()
 
 # The data are sources from twitter, kaggle, wikepedia talk page, youtube
-aggression = pd.read_csv('..//data//aggression_parsed_dataset.csv')
-attack = pd.read_csv('..//data//attack_parsed_dataset.csv')
-toxicity = pd.read_csv('..//data//toxicity_parsed_dataset.csv')
-racism = pd.read_csv('..//data//twitter_racism_parsed_dataset.csv')
-sexism = pd.read_csv('..//data//twitter_sexism_parsed_dataset.csv')
-kaggle = pd.read_csv('..//data//kaggle_parsed_dataset.csv')
-twitter = pd.read_csv('..//data//twitter_parsed_dataset.csv')
-youtube = pd.read_csv('..//data//youtube_parsed_dataset.csv')
+aggression = pd.read_csv('../data/aggression_parsed_dataset.csv')
+attack = pd.read_csv('../data/attack_parsed_dataset.csv')
+toxicity = pd.read_csv('../data/toxicity_parsed_dataset.csv')
+racism = pd.read_csv('../data/twitter_racism_parsed_dataset.csv')
+sexism = pd.read_csv('../data/twitter_sexism_parsed_dataset.csv')
+kaggle = pd.read_csv('../data/kaggle_parsed_dataset.csv')
+twitter = pd.read_csv('../data/twitter_parsed_dataset.csv')
+youtube = pd.read_csv('../data/youtube_parsed_dataset.csv')
 
 # Add a new column to each DataFrame indicating the source dataset
 aggression['source'] = 'aggression'
@@ -199,7 +199,7 @@ def get_base64_of_bin_file(bin_file):
     return encoded_image
 
 # Set the background image path
-background_image_path = './/utility-images//background_image.png'
+background_image_path = './utility-images/background_image.png'
 
 # Encode the image to base64
 encoded_background_image = get_base64_of_bin_file(background_image_path)
@@ -208,7 +208,7 @@ encoded_background_image = get_base64_of_bin_file(background_image_path)
 opacity_level = 0.6
 
 # Set the background image path
-lit_image_path = './/utility-images//Timeline.png'
+lit_image_path = './utility-images/Timeline.png'
 
 # Your Streamlit content goes here
 if menu_id == 'Home':
@@ -288,7 +288,7 @@ if menu_id == 'Exploratory Data Analysis':
         col2.plotly_chart(pie_fig)
     
         # Load your custom brain-shaped mask image
-        mask_image = np.array(Image.open('.//utility-images//human thought.jpg'))
+        mask_image = np.array(Image.open('./utility-images/human thought.jpg'))
 
         # Create a WordCloud object with your mask and custom colors
         wordcloud = WordCloud(width=150, height=300, background_color=None, mode='RGBA', colormap='magma', max_words=200, mask=mask_image)
@@ -303,7 +303,7 @@ if menu_id == 'Exploratory Data Analysis':
         #word_bar_graph(emotional_detection, 'text', "Most Occurred Words")  # Use 'emotional_detection' instead of 'emotional_detection'
         # Assuming 'emotional_detection' is your DataFrame
         fig = word_bar_graph(emotional_detection, 'text', "Most Occurred Words")
-        #pio.write_image(fig, r'C://Users//marit//Desktop//MSBA Thesis//streamlit//utility-images//word_bar_graph.png')
+        #pio.write_image(fig, r'C:/Users/marit/Desktop/MSBA Thesis/streamlit/utility-images/word_bar_graph.png')
         col2.plotly_chart(fig)
 
         # Show the word bar graph in the second column (row 2)
@@ -434,7 +434,7 @@ if menu_id == 'Exploratory Data Analysis':
         # Show the heatmap in the first column (col1)
         col1.plotly_chart(heatmap)
 
-        clusters_image_path = './/utility-images//clusters.png'
+        clusters_image_path = './utility-images/clusters.png'
         # Encode the image to base64
         encoded_clusters_image = get_base64_of_bin_file(clusters_image_path)
 
@@ -445,14 +445,14 @@ if menu_id == 'Exploratory Data Analysis':
         col2.markdown(clusters_image_code, unsafe_allow_html=True)
 
 # Load the pre-trained model
-model = load_model("..//models//emotioncyberbullying//NN_cyberbullying_emotion.h5")
+model = load_model("../models/emotioncyberbullying/NN_cyberbullying_emotion.h5")
 
 # Load the MultiLabelBinarizer used during training
-mlb_path = "..//models//emotioncyberbullying//mlb.pkl"
+mlb_path = "../models/emotioncyberbullying/mlb.pkl"
 mlb = joblib.load(mlb_path)
 
 # Load the Tokenizer
-tokenizer_path = "..//models//emotioncyberbullying//tokenizer.pkl"
+tokenizer_path = "../models/emotioncyberbullying/tokenizer.pkl"
 tokenizer = joblib.load(tokenizer_path)
 
 # Max sequence length and number of classes
