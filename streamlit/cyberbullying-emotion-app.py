@@ -149,6 +149,11 @@ cyberbullying_data = cyberbullying_data.rename(columns={'oh_label': 'cyberbullyi
 # Make it look nice from the start
 st.set_page_config(page_title='MSBA Thesis', layout='wide', initial_sidebar_state='auto')
 
+primaryColor="#8A419C"
+backgroundColor="#E6E6FA"
+secondaryBackgroundColor="#262730"
+textColor="#000000"
+
 # Specify the primary menu definition with custom CSS
 menu_data = [
     {'icon': "", 'label': "     "},
